@@ -2,8 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SunnySide - Premium Roblox Serverside</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>SunnySide Serverside</title>
+    <meta name="title" content="SunnySide Serverside">
+    <meta name="description" content="The brightest and most powerful Roblox serverside solution. Experience unmatched performance with a warm, premium touch.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sunnyside.wtf">
+    <meta property="og:title" content="SunnySide Serverside">
+    <meta property="og:description" content="The brightest and most powerful Roblox serverside solution. Experience unmatched performance with a warm, premium touch.">
+    <meta property="og:image" content="https://i.imgur.com/s6rtnP4.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sunnyside.wtf">
+    <meta property="twitter:title" content="SunnySide Serverside">
+    <meta property="twitter:description" content="The brightest and most powerful Roblox serverside solution. Experience unmatched performance with a warm, premium touch.">
+    <meta property="twitter:image" content="https://i.imgur.com/s6rtnP4.png">
+    
+    <!-- Discord -->
+    <meta name="theme-color" content="#FFA500">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -12,15 +39,66 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0f;
             color: #fff;
             overflow-x: hidden;
             min-height: 100vh;
+            position: relative;
         }
 
-        /* Animated Background */
-        .bg-animation {
+        /* Warm Sunny Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            background: radial-gradient(ellipse at top right, rgba(255, 165, 0, 0.2) 0%, transparent 50%),
+                        radial-gradient(ellipse at bottom left, rgba(255, 200, 50, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at center, rgba(255, 140, 0, 0.1) 0%, transparent 70%);
+        }
+
+        /* Animated Sun Rays */
+        .sun-rays {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+            opacity: 0.05;
+        }
+
+        .ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(255, 165, 0, 0.8), transparent);
+            transform-origin: top center;
+            animation: rotate 20s linear infinite;
+        }
+
+        .ray:nth-child(1) { transform: rotate(0deg); }
+        .ray:nth-child(2) { transform: rotate(45deg); animation-delay: -2.5s; }
+        .ray:nth-child(3) { transform: rotate(90deg); animation-delay: -5s; }
+        .ray:nth-child(4) { transform: rotate(135deg); animation-delay: -7.5s; }
+        .ray:nth-child(5) { transform: rotate(180deg); animation-delay: -10s; }
+        .ray:nth-child(6) { transform: rotate(225deg); animation-delay: -12.5s; }
+        .ray:nth-child(7) { transform: rotate(270deg); animation-delay: -15s; }
+        .ray:nth-child(8) { transform: rotate(315deg); animation-delay: -17.5s; }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating particles (like dust in sunlight) */
+        .particles {
             position: fixed;
             width: 100%;
             height: 100%;
@@ -30,30 +108,30 @@
             overflow: hidden;
         }
 
-        .bg-animation span {
+        .particle {
             position: absolute;
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 215, 0, 0.1);
-            animation: float 25s infinite;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 200, 100, 0.6);
             border-radius: 50%;
+            animation: float 15s infinite;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
         }
 
-        .bg-animation span:nth-child(1) { left: 10%; animation-duration: 20s; animation-delay: 0s; }
-        .bg-animation span:nth-child(2) { left: 20%; animation-duration: 25s; animation-delay: 2s; }
-        .bg-animation span:nth-child(3) { left: 30%; animation-duration: 22s; animation-delay: 4s; }
-        .bg-animation span:nth-child(4) { left: 40%; animation-duration: 28s; animation-delay: 1s; }
-        .bg-animation span:nth-child(5) { left: 50%; animation-duration: 24s; animation-delay: 3s; }
-        .bg-animation span:nth-child(6) { left: 60%; animation-duration: 26s; animation-delay: 5s; }
-        .bg-animation span:nth-child(7) { left: 70%; animation-duration: 23s; animation-delay: 2s; }
-        .bg-animation span:nth-child(8) { left: 80%; animation-duration: 27s; animation-delay: 4s; }
+        .particle:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 25%; animation-duration: 18s; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 40%; animation-duration: 15s; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 55%; animation-duration: 14s; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 70%; animation-duration: 16s; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 85%; animation-duration: 13s; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 15%; animation-duration: 17s; animation-delay: 6s; }
+        .particle:nth-child(8) { left: 60%; animation-duration: 19s; animation-delay: 2.5s; }
 
         @keyframes float {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
         }
 
         /* Navigation */
@@ -61,36 +139,60 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 25px 50px;
+            padding: 25px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: rgba(15, 15, 30, 0.7);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 15, 0.8);
+            border-bottom: 1px solid rgba(255, 165, 0, 0.1);
         }
 
         .logo {
-            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
             font-weight: 700;
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+        }
+
+        .logo-icon {
+            font-size: 32px;
+            filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.6));
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 50%, #FFA500 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
         }
 
         .nav-links {
             display: flex;
             gap: 40px;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
-            color: #fff;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 500;
             transition: all 0.3s;
             position: relative;
         }
@@ -102,16 +204,16 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #ffd700;
+            background: linear-gradient(90deg, #FFA500, #FFD700);
             transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFA500;
         }
 
         .nav-links a:hover::after {
             width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: #ffd700;
         }
 
         /* Hero Section */
@@ -127,127 +229,347 @@
             padding: 0 20px;
         }
 
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #FFA500;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
         .hero h1 {
-            font-size: 72px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 30%, #FFED4E 50%, #FFD700 70%, #FFA500 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: shine 3s infinite;
             background-size: 200% auto;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
+            animation: shine 4s linear infinite;
+            text-shadow: 0 0 80px rgba(255, 165, 0, 0.3);
         }
 
         .hero p {
-            font-size: 24px;
-            color: #b0b0c0;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 40px;
             max-width: 600px;
+            line-height: 1.6;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .btn {
             padding: 16px 40px;
-            font-size: 18px;
+            font-size: 16px;
+            font-weight: 600;
             border: none;
-            border-radius: 50px;
+            border-radius: 12px;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s;
-            font-weight: 600;
             position: relative;
             overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #0f0f1e;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+            color: #fff;
+            box-shadow: 0 10px 40px rgba(255, 165, 0, 0.4);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(255, 165, 0, 0.6);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: #ffd700;
-            border: 2px solid #ffd700;
+            background: rgba(255, 165, 0, 0.1);
+            color: #FFA500;
+            border: 2px solid rgba(255, 165, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: #ffd700;
-            color: #0f0f1e;
-            transform: translateY(-3px);
+            background: rgba(255, 165, 0, 0.2);
+            border-color: #FFA500;
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stats {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 60px 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Features Section */
         .features {
             position: relative;
             z-index: 1;
-            padding: 100px 50px;
-            max-width: 1200px;
+            padding: 120px 60px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .features h2 {
+        .features-header {
             text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .features-header h2 {
             font-size: 48px;
-            margin-bottom: 60px;
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            font-weight: 900;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #FFA500, #FFD700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
+        .features-header p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
         .feature-card {
-            background: rgba(26, 26, 46, 0.6);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 165, 0, 0.03);
+            backdrop-filter: blur(20px);
             padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            transition: all 0.3s;
-            cursor: pointer;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 165, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(255, 165, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: #ffd700;
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+            transform: translateY(-8px);
+            border-color: rgba(255, 165, 0, 0.4);
+            box-shadow: 0 20px 60px rgba(255, 165, 0, 0.2);
         }
 
         .feature-icon {
             font-size: 48px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.4));
         }
 
         .feature-card h3 {
             font-size: 24px;
-            margin-bottom: 15px;
-            color: #ffd700;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #FFA500;
         }
 
         .feature-card p {
-            color: #b0b0c0;
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* Payment Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1f 0%, #0f0f14 100%);
+            padding: 50px;
+            border-radius: 24px;
+            border: 2px solid rgba(255, 165, 0, 0.3);
+            max-width: 550px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 30px 80px rgba(255, 165, 0, 0.3);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+            border-radius: 8px;
+        }
+
+        .close-btn:hover {
+            color: #FFA500;
+            background: rgba(255, 165, 0, 0.1);
+        }
+
+        .modal-content h2 {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-content > p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 32px;
+            font-size: 15px;
+        }
+
+        .payment-options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .payment-option {
+            background: rgba(255, 165, 0, 0.05);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 165, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option:hover {
+            border-color: rgba(255, 165, 0, 0.4);
+            transform: translateX(4px);
+            background: rgba(255, 165, 0, 0.1);
+        }
+
+        .payment-icon {
+            font-size: 28px;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .payment-info p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0;
         }
 
         /* Footer */
@@ -255,24 +577,24 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            padding: 40px 20px;
-            background: rgba(15, 15, 30, 0.8);
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 60px 20px;
+            background: rgba(10, 10, 15, 0.8);
+            border-top: 1px solid rgba(255, 165, 0, 0.1);
         }
 
         footer p {
-            color: #b0b0c0;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 20px 20px;
+                padding: 20px 24px;
             }
 
             .nav-links {
-                gap: 20px;
-                font-size: 14px;
+                gap: 24px;
             }
 
             .hero h1 {
@@ -280,33 +602,61 @@
             }
 
             .hero p {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .features {
-                padding: 60px 20px;
+                padding: 80px 24px;
             }
 
-            .features h2 {
+            .features-header h2 {
                 font-size: 36px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 32px;
+            }
+
+            .stats {
+                gap: 40px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+    <div class="gradient-bg"></div>
+    
+    <div class="sun-rays">
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+    </div>
+
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
 
     <nav>
-        <div class="logo">☀️ SunnySide</div>
+        <div class="logo">
+            <span class="logo-icon">☀️</span>
+            <span class="logo-text">SunnySide</span>
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#features">Features</a></li>
@@ -315,52 +665,157 @@
     </nav>
 
     <section class="hero" id="home">
+        <div class="hero-badge">
+            <span>✨</span>
+            <span>Trusted by thousands</span>
+        </div>
         <h1>SunnySide</h1>
-        <p>The most powerful and reliable Roblox serverside solution. Elevate your experience today.</p>
+        <p>The brightest and most powerful Roblox serverside solution. Experience unmatched performance with warmth and reliability.</p>
         <div class="cta-buttons">
-            <a href="#" class="btn btn-primary">Purchase Now</a>
-            <a href="#" class="btn btn-secondary">Join Discord</a>
+            <a href="#" class="btn btn-primary" onclick="openModal(event)">
+                <span>Purchase Now</span>
+                <span>→</span>
+            </a>
+            <a href="#" class="btn btn-secondary">
+                <span>Join Discord</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">5K+</div>
+            <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">99.9%</div>
+            <div class="stat-label">Uptime</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Support</div>
         </div>
     </section>
 
     <section class="features" id="features">
-        <h2>Why Choose SunnySide?</h2>
+        <div class="features-header">
+            <h2>Why Choose SunnySide?</h2>
+            <p>Experience the warmth of premium features</p>
+        </div>
         <div class="feature-grid">
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
+                <span class="feature-icon">⚡</span>
                 <h3>Lightning Fast</h3>
-                <p>Optimized performance for the smoothest experience possible with minimal latency.</p>
+                <p>Optimized performance for the smoothest experience possible with minimal latency and maximum efficiency.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Secure & Safe</h3>
-                <p>Advanced security measures to keep your experience protected at all times.</p>
+                <span class="feature-icon">🔒</span>
+                <h3>Secure & Protected</h3>
+                <p>Advanced security measures to keep your experience safe and protected at all times with regular updates.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🚀</div>
+                <span class="feature-icon">🌟</span>
                 <h3>Always Updated</h3>
-                <p>Regular updates ensure compatibility with the latest Roblox versions.</p>
+                <p>Regular updates ensure compatibility with the latest Roblox versions and new features as they release.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">💎</div>
+                <span class="feature-icon">💎</span>
                 <h3>Premium Quality</h3>
-                <p>Built with quality in mind, delivering excellence in every aspect.</p>
+                <p>Built with excellence in mind, delivering the highest quality experience in every single aspect.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🌟</div>
-                <h3>24/7 Support</h3>
-                <p>Our dedicated team is always ready to help you with any questions.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
+                <span class="feature-icon">🎯</span>
                 <h3>Easy to Use</h3>
-                <p>Simple and intuitive interface designed for users of all skill levels.</p>
+                <p>Intuitive interface designed for users of all skill levels, from beginners to advanced users.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🌞</span>
+                <h3>24/7 Support</h3>
+                <p>Our dedicated team is always ready to help you with any questions or issues you might encounter.</p>
             </div>
         </div>
     </section>
 
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">×</span>
+            <h2>Choose Payment Method</h2>
+            <p>Select your preferred payment option below</p>
+            <div class="payment-options">
+                <div class="payment-option" onclick="alert('Redirecting to card payment...')">
+                    <div class="payment-icon">💳</div>
+                    <div class="payment-info">
+                        <h3>Debit/Credit Card</h3>
+                        <p>Visa, Mastercard, Amex</p>
+                    </div>
+                </div>
+                <div class="payment-option" onclick="alert('Redirecting to PayPal...')">
+                    <div class="payment-icon">🅿️</div>
+                    <div class="payment-info">
+                        <h3>PayPal</h3>
+                        <p>Fast and secure payments</p>
+                    </div>
+                </div>
+                <div class="payment-option" onclick="alert('Redirecting to Google Pay...')">
+                    <div class="payment-icon">🔵</div>
+                    <div class="payment-info">
+                        <h3>Google Pay</h3>
+                        <p>Quick mobile payments</p>
+                    </div>
+                </div>
+                <div class="payment-option" onclick="alert('Redirecting to Apple Pay...')">
+                    <div class="payment-icon">🍎</div>
+                    <div class="payment-info">
+                        <h3>Apple Pay</h3>
+                        <p>Secure Apple payments</p>
+                    </div>
+                </div>
+                <div class="payment-option" onclick="alert('Redirecting to Bitcoin...')">
+                    <div class="payment-icon">₿</div>
+                    <div class="payment-info">
+                        <h3>Bitcoin</h3>
+                        <p>Cryptocurrency payment</p>
+                    </div>
+                </div>
+                <div class="payment-option" onclick="alert('Redirecting to Ethereum...')">
+                    <div class="payment-icon">Ξ</div>
+                    <div class="payment-info">
+                        <h3>Ethereum</h3>
+                        <p>ETH cryptocurrency</p>
+                    </div>
+                </div>
+                <div class="payment-option" onclick="alert('Redirecting to Cash App...')">
+                    <div class="payment-icon">💵</div>
+                    <div class="payment-info">
+                        <h3>Cash App</h3>
+                        <p>Instant peer-to-peer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2025 SunnySide. All rights reserved.</p>
+        <p>&copy; 2024 SunnySide. All rights reserved. Made with ☀️</p>
     </footer>
+
+    <script>
+        function openModal(event) {
+            event.preventDefault();
+            document.getElementById('paymentModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>

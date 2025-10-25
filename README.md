@@ -1,2 +1,1 @@
-# SunnySide.wtf
-THE SUNNYSIDE SITE!
+# why are you here

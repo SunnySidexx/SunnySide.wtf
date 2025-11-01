@@ -241,6 +241,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .pricing-card.featured {
@@ -259,6 +260,8 @@
             background: radial-gradient(circle at top, rgba(255, 165, 0, 0.1), transparent);
             opacity: 0;
             transition: opacity 0.4s;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .pricing-card:hover::before {
@@ -372,6 +375,8 @@
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
         .buy-btn-primary {
@@ -544,7 +549,7 @@
                     <li><span class="feature-icon">✓</span> 24/7 support</li>
                     <li><span class="feature-icon">✓</span> Regular updates</li>
                 </ul>
-                <a href="https://www.roblox.com/game-pass/1547982469/Standard" target="_blank" class="buy-btn buy-btn-secondary">Purchase Standard</a>
+                <a href="https://www.roblox.com/game-pass/1547982469/Standard" target="_blank" class="buy-btn buy-btn-secondary" style="pointer-events: auto; cursor: pointer;">Purchase Standard</a>
             </div>
 
             <!-- Premium Plan (Featured) -->
@@ -565,7 +570,7 @@
                     <li><span class="feature-icon">✓</span> Early feature access</li>
                     <li><span class="feature-icon">✓</span> Custom scripts</li>
                 </ul>
-                <a href="https://www.roblox.com/game-pass/1566150339/Premium" target="_blank" class="buy-btn buy-btn-primary">Purchase Premium</a>
+                <a href="https://www.roblox.com/game-pass/1566150339/Premium" target="_blank" class="buy-btn buy-btn-primary" style="pointer-events: auto; cursor: pointer;">Purchase Premium</a>
             </div>
 
             <!-- Ultimate Plan -->
@@ -586,7 +591,7 @@
                     <li><span class="feature-icon">✓</span> Lifetime updates</li>
                     <li><span class="feature-icon">✓</span> Discord role</li>
                 </ul>
-                <a href="https://www.roblox.com/game-pass/1564356325/Ultimate" target="_blank" class="buy-btn buy-btn-secondary">Purchase Ultimate</a>
+                <a href="https://www.roblox.com/game-pass/1564356325/Ultimate" target="_blank" class="buy-btn buy-btn-secondary" style="pointer-events: auto; cursor: pointer;">Purchase Ultimate</a>
             </div>
         </div>
 
